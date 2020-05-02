@@ -1,0 +1,66 @@
+/*Se le pide un programa que solicite primeramente el monto total de compras de una persona. Si el monto es inferior a 100.00, el programa dirá 
+que el cliente no aplica a la promoción. Pero si la persona ingresa un monto en compras igual o superior a 100.00, el programa solicita el ingreso 
+de un número entero del uno al cinco.  Cada número corresponderá a un color diferente (1: Bola blanca; 2: Bola roja; 3: Bola azul; 4:  Bola verde; 5:
+Bola amarilla) de cinco colores de bolas que hay para determinar el descuento que el cliente recibirá como premio.   Si la bola es color blanco, 
+no hay descuento, pero si es uno de los otros cuatro colores, sí se aplicará un descuento determinado según la tabla adjunta, y ese descuento 
+se aplicará sobre el total de la compra que ingreso inicialmente el usuario, de manera que el programa mostrará un nuevo valor a pagar luego de haber
+ aplicado el descuento.  Almacenar todos los datos de ventas y descuentos a un archivo.  Así mismo mostrar el total de ventas del día.
+ 1.	Bola Blanca: No tiene descuento 
+2.	Bola Roja:10%
+3.	Bola Azul:  20% 
+4.	Bola Verde: 25% 
+5.	Bola Amarilla 50% */
+ 
+#include <fstream>
+#include <conio.h>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <iomanip>
+ 
+ using namespace std;
+ int main (){
+ 	int compras, numero,compras2,compras3,compras4,compras5;
+ 	
+ 	
+ 	cout<<"ingrese el monto que gasto en sus compras";
+ 	cin>>compras;
+ 	
+ 	if (compras<100){
+ 		cout<<"no aplica a la promocion";
+	 }
+ 	else (compras>100) {
+ 		cout<<"ingrese un numero del 1 al 5: ";
+ 		cin>>numero;
+	 }
+ 	
+ 	switch (numero){
+ 			case '1' cout<<"es la bola blanca no hay descuento"; break;
+ 			case '2' cout<<"es la Bola Roja 10% de descuento:"; break;
+ 			case '3' cout<<"es la Bola Azul  20%  de descuento: "; break;
+ 			case '4' cout<<"es la Bola Verde 25% de descuento: "; break;
+ 			case '5' cout<<"es la Bola Amarilla 50% de descuento: "; break;	
+	 }
+ 	
+ 	if(numero=2){
+ 		compras2=compras*0.1;
+ 		cout<<"su monto a pagar es: "<<compras2;
+ 		
+	 }else if (numero=3){
+ 		compras3=compras*0.2;
+ 		cout<<"su monto a pagar es: "<<compras3;
+	
+	 } else if (numero=4){
+ 		compras4=compras*0.25;
+ 		cout<<"su monto a pagar es: "<<compras4;
+	
+	 }else if (numero=5){
+ 		compras5=compras*0.5;
+ 		cout<<"su monto a pagar es: "<<compras5;
+	 }
+ 	
+ 	
+ 	
+ 	return 0;
+ 	getch ();
+ }

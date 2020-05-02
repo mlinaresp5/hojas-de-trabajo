@@ -1,0 +1,395 @@
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <iomanip>
+using namespace std;
+
+struct ventas{
+	int opc;
+	int cant;
+	int so;
+	float tot;
+	float total;
+	float descuento;
+	float precio;
+	float desaso;
+};
+void venta();
+void reporte();
+int main(){
+	
+	
+	int n;	
+	
+		cout<<"----- menu -----"<<endl;
+	cout<<" Venta -> 1  "<<endl;
+	cout<<" Reporte -> 2  "<<endl;
+	cin>> n;
+	switch (n)
+{
+    case 1:
+        venta();
+        break;
+
+    case 2:
+        reporte();
+        break;
+	
+}
+}
+	
+void venta(){
+	system("CLS");
+	int opc;
+	int cant;
+	int so;
+	float tot;
+	float total;
+	float precio;
+	float descuento;
+	float desaso;
+	string s;
+	
+	cout<<"----- venta de boleto -----"<<endl;
+	cout<<" Ingrese la zona: "<<endl;
+	cout<<" VIP        (Q350.00) -> 1  "<<endl;
+	cout<<" Platea     (Q130.00) -> 2  "<<endl;
+	cout<<" Popular    (Q50.00)  -> 3  "<<endl;
+	cin>>opc;
+	
+	system("CLS");
+	
+	
+	cout<<"¿Se encuentra asociado?"<<endl;
+	cout<<"SI -> 1"<<endl;
+	cout<<"NO -> 0"<<endl;
+	cin>>so;
+	system("CLS");
+	
+	cout<<"Cantidad de entradas a comprar:"<<endl;
+    cout<<" "<<endl;
+	cout<<"------------------------------------------------------"<<endl;
+	
+	cout<<"   ¡Recuerde!"<<endl;
+	cout<<" Descuento por numero de entradas: "<<endl;
+	cout<<" Menos de 3 entradas          no hay descuento"<<endl;
+	cout<<" Entre 3 y 6 entradas          5% de descuento"<<endl;
+	cout<<" Entre 7 y 9 entradas        7.5$ de descuento"<<endl;
+	cout<<" Mas de 9 entradas            10% de descuento"<<endl;
+	cin>>cant;
+
+	cout<<opc<<endl;
+	cout<<cant<<endl;
+	
+	
+	if(opc == 1 && so == 1){
+		if(cant >=3 && cant <=6 ){
+			tot=cant*350;
+			precio= tot * 0.95;
+			desaso=precio*0.92;
+			descuento = tot * 0.05;
+			total=desaso;
+			system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+			
+		}else if(cant >=7 && cant <=9){
+				tot=cant*350;
+			precio= tot * 0.925;
+			desaso=precio*0.92;
+				descuento = tot * 0.075;
+				total=desaso;
+				system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 7.5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant > 9){
+				tot=cant*350;
+			precio= tot * 0.90;
+			desaso=precio*0.92;
+				descuento = tot * 0.10;
+				total=desaso;
+				system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 10%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+			
+		}else if(cant < 3){
+			precio=cant*350;
+			desaso=precio*0.92;
+				descuento = 0;
+				total=desaso;
+				system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		} 
+	}else if(opc == 1 && so == 0 ){
+		if(cant >=3 && cant <=6 ){
+			tot=cant*350;
+			precio= tot * 0.95;
+			desaso=0;
+			descuento = tot * 0.05;
+			total=precio;
+			system("CLS");
+			cout<<"obtiene descuento del 5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant >=7 && cant <=9){
+			tot=cant*350;
+			precio= tot * 0.925;
+			desaso=0;
+				descuento = tot * 0.075;
+				total=precio;
+				system("CLS");
+				cout<<"obtiene descuento del 7.5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant > 9){
+				tot=cant*350;
+			precio= tot * 0.90;
+			desaso=0;
+			descuento = tot * 0.10;
+			total=precio;
+			system("CLS");
+			cout<<"obtiene descuento del 10%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant < 3){
+			precio=cant*350;
+			desaso=0;
+			descuento = 0;
+			total=precio;
+			system("CLS");
+				cout<<"no obtiene descuentos"<<endl;
+				cout<<"Total a pagar:  "<<total<<endl;
+		}
+		}else if(opc == 2 && so == 1){
+			
+	        if(cant >=3 && cant <=6){
+			tot=cant*130;
+			precio= tot * 0.95;
+			desaso=precio*0.92;
+			descuento = tot * 0.05;
+			total=desaso;
+			system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant >=7 && cant <=9){
+			tot=cant*130;
+			precio= tot * 0.925;
+			desaso=precio*0.92;
+			descuento = tot * 0.075;
+				total=desaso;
+				system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 7.5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant > 9){
+			tot=cant*130;
+			precio= tot * 0.90;
+			desaso=precio*0.92;
+			descuento = tot * 0.10;
+				total=desaso;
+				system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 10%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant < 3){
+			precio=cant*130;
+			desaso=precio*0.92;
+			descuento = 0;
+				total=desaso;
+				system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		
+		}
+		}else if(opc == 2 && so == 0 ){
+			
+	        if(cant >=3 && cant <=6){
+			tot=cant*130;
+			precio= tot * 0.95;
+	    	desaso=0;
+			descuento = tot * 0.05;
+				total=precio;
+				system("CLS");
+			cout<<"obtiene descuento del 5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant >=7 && cant <=9){
+			tot=cant*130;
+			precio= tot * 0.925;
+			desaso=0;
+			descuento = tot * 0.075;
+			total=precio;
+			system("CLS");
+			cout<<"obtiene descuento del 7.5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant > 9){
+			tot=cant*130;
+			precio= tot * 0.90;
+			desaso=0;
+			descuento = tot * 0.10;
+			total=precio;
+			system("CLS");
+			cout<<"obtiene descuento del 10%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant < 3){
+			precio=cant*130;
+		    desaso=0;
+			descuento = 0;
+			total=precio;
+			system("CLS");
+			cout<<" no obtiene descuento"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		
+		}
+		}else if (opc == 3 && so == 1){
+			
+			if(cant >=3 && cant <=6){
+			tot=cant*50;
+			precio= tot * 0.95;
+			desaso=precio*0.92;
+			descuento = tot * 0.05;
+			total=desaso;
+			system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant >=7 && cant <=9){
+			tot=cant*50;
+			precio= tot * 0.925;
+			desaso=precio*0.92;
+			descuento = tot * 0.075;
+			total=desaso;
+			system("CLS");
+			cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 7.5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant > 9){
+			tot=cant*50;
+			precio= tot * 0.90;
+			desaso=precio*0.92;
+			descuento = tot * 0.10;
+			total=desaso;
+			system("CLS");
+				cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"obtiene descuento del 10%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant < 3){
+	    	precio=cant*50;
+	    	desaso=precio*0.92;
+	    	descuento = 0;
+	    	total=desaso;
+	    	system("CLS");
+	    	cout<<"obtiene descuento por asociado"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+			
+		}
+		}else if (opc == 3 && so == 0){
+			
+			if(cant >=3 && cant <=6){
+			tot=cant*50;
+			precio= tot * 0.95;
+			desaso=0;
+			descuento = tot * 0.05;
+			total=precio;
+			system("CLS");
+			cout<<"obtiene descuento del 5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant >=7 && cant <=9){
+			tot=cant*50;
+			precio= tot * 0.925;
+				desaso=0;
+			descuento = tot * 0.075;
+			total=precio;
+			system("CLS");
+				cout<<"obtiene descuento del 7.5%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant > 9){
+			tot=cant*50;
+			precio= tot * 0.90;
+			desaso=0;
+			descuento = tot * 0.10;
+			total=precio;
+			system("CLS");
+			cout<<"obtiene descuento del 10%"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+		}else if(cant < 3){
+	    	precio=cant*50;
+	    	desaso=0;
+	    	descuento = 0;
+			total=precio;
+			system("CLS");
+			cout<<" no obtiene descuento"<<endl;
+			cout<<"Total a pagar:  "<<total<<endl;
+			
+		}
+		
+		
+	}
+
+
+
+
+
+	ofstream grabararchivo;
+	try {
+		grabararchivo.open("ventaBoleto.txt",ios::app);
+		grabararchivo<<opc<<"\t"<<so<<"\t"<<cant<<"\t"<<desaso<<"\t"<<descuento<<"\t"<<total<<endl;
+		grabararchivo.close();
+	}
+	catch(exception X){
+		cout<<"Error en la manipulacion del archivo"<<endl;
+	}
+	
+	cout<<"\n"<<"Ventas Actuales"<<endl;
+	cout<<"Zona Asociado  Boletos  D.As   desc    Total"<<endl;
+	ifstream leerarchivo;
+	try {
+		leerarchivo.open("ventaBoleto.txt",ios::in);				
+		while (getline(leerarchivo, s))
+			cout<<s<<endl;		
+		leerarchivo.close();
+	}
+	catch(exception X){
+		cout<<"Error en la manipulacion del archivo"<<endl;
+	}
+	
+}
+
+void reporte(){
+	system("CLS");
+	ifstream db;
+	float zn,as,cant,daso,des,tv=0;
+	float sumatotal=0;
+	float tp1=0;
+	float tp2=0;
+	float tp3=0;	
+	try{	
+		db.open("ventaBoleto.txt",ios::in);
+		
+		while (db >>zn >> as >>cant>>daso>>des>>tv){
+			sumatotal = tv + sumatotal;	
+			if (zn==1)
+				tp1+=tv;
+			else if (zn==2)
+				tp2+=tv;
+			else if (zn==3)
+				tp3+=tv;
+		}	
+		db.close();
+		
+		cout<<setprecision(5)<<"Total de Ventas:          "<<sumatotal<<endl;
+		cout<<"ventas por zona:  "<<endl;
+		cout<<setprecision(5)<<" VIP   "<<tp1<<" - % sobre el total: "<<setprecision(3)<<tp1*100/sumatotal<<endl;
+		cout<<setprecision(5)<<" Platea "<<tp2<<" - % sobre el total: "<<setprecision(3)<<tp2*100/sumatotal<<endl;
+		cout<<setprecision(5)<<" Popular  "<<tp3<<" - % sobre el total: "<<setprecision(3)<<tp3*100/sumatotal<<endl;
+		
+	}
+	catch (exception X){		
+			cout<<"Error para abrir archivo"<<endl;			
+			exit(1);
+	}		
+	
+	
+}

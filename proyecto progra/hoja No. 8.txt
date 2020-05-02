@@ -1,0 +1,52 @@
+/*Descripción de problema:  Escribir una función Salario que calcule los salarios de un trabajador para un número dado de horas trabajadas 
+y un salario hora. Las horas que superen las 40 horas semanales se pagarán como extras con un salario hora 1,5 veces el salario ordinario. 
+Así mismo se deberá calcular el monto a pagar de IGSS por cada trabajador.   
+El programa deberá mostrar un menú para:  
+1) Invocar dicha función y grabar datos a un archivo, 
+2) Adicionalmente deberá tener una opción para leer el archivo y grabar los datos en memoria. 
+3) Una opción para mostrar cuanto se paga de total de planilla e IGSS.*/
+
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+float salario(float horastrabajadas, float tarifa)
+
+{
+	float arreglo [5];
+	if(horastrabajadas>40)
+	{
+		arreglo[0]=tarifa*2.5;
+		arreglo[1]=horastrabajadas-40; //horas extras 
+		arreglo[2]=arreglo[1]*arreglo[0];
+		arreglo[3]=40*tarifa;
+		arreglo[4]=arreglo[2]+arreglo[3];
+		return arreglo[4];	
+	}
+	
+	else {
+		arreglo[0]=horastrabajadas*tarifa;
+	}
+}
+
+int main ()	{
+	float horastrabajadas,tarifa;
+	float salSinIgss, igss;
+	
+	cout<<"ingrese las horas trabajads: "<<endl;
+	cin>>horastrabajadas;
+	cout<<"ingrese el valor por hora trabajado: "<<endl;
+	cin>>tarifa;
+	cout<<"su salario es: "<<salario (horastrabajadas,tarifa)<<endl;
+//pago sin igss 
+if(igss=salario*0.0483){
+	salSinIgss=salario-igss
+
+cout<<"el salario sin el IGSS es: "<<salSinIgss<<endl; 
+}
+
+	return 0;
+}
+
+  
+  

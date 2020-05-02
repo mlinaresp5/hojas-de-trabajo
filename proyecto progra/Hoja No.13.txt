@@ -1,0 +1,89 @@
+#include<iostream.h>
+#include<iomanip.h>
+#include<stdlib.h>
+#include<fstream.h>
+
+
+int getopcion();
+void agregar();
+void mostrar();
+int main()
+{
+
+     int opcion;
+    do{
+   cout<<"introduzca opcion\n"
+       <<"1 - agregar animal\n"
+       <<"2 - mostrar animales\n"
+       <<"3 - salir del programa\n";
+
+  opcion=getopcion();
+
+  switch(opcion)
+  {
+  	case 1:
+        agregar();
+        break;
+   case 2:
+        mostrar();
+        break;
+    }
+ }while(opcion!= 3);
+
+  return 0;
+
+}
+
+int getopcion()
+{
+
+	int opcion;
+
+	cout<<"\?";
+   cin>> opcion;
+
+   return opcion;
+
+}
+void agregar()
+{
+ char nombre[30];
+ int edad;
+ int peso;
+
+ ofstream zoofile("zoologico.txt",ios::app);
+ if(!zoofile)
+ {
+ cerr<<"el archivo no puede abrirse"<<endl;
+ exit(1);
+ }
+ cout<<"ingrese el nombre"<<endl;
+ cin>>nombre;
+ cout<<"ingrese la edad"<<endl;
+ cin>>edad;
+ cout<<"ingrese el peso"<<endl;
+ cin>>peso;
+
+ zoofile<<nombre<<" "<<edad<<" "<<peso<<"\n";
+
+}
+void mostrar()
+{
+ char nombre[30];
+ int edad;
+ int peso;
+
+ ifstream zoofile("zoologico.txt",ios::in);
+ if(!zoofile)
+  {
+ cerr<<"el archivo no puede abrirse"<<endl;
+ exit(1);
+ }
+ cout<<"animales ingresados"<<endl;
+ zoofile >>nombre >>edad>> peso;
+ while(!zoofile.eof())
+ {
+  cout<<"Nombre: "<<nombre<<"\n"<<"Edad: "<<edad<<"\n"<<"Peso: "<<peso<<"\n";
+    zoofile >>nombre >>edad>> peso;
+    }
+}
